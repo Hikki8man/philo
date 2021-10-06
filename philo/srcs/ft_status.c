@@ -22,7 +22,9 @@ int	philo_died(t_philo *philo)
 int	meals_done(t_philo *philo)
 {
 	if (philo->info->meal_param == 1 && philo->meals <= 0)
+	{
 		return (1);
+	}
 	return (0);
 }
 
@@ -34,21 +36,25 @@ void check_death(t_philo *philo)
 		i = 0;
 		while (i < philo->info->nb_of_philo)
 		{
-//			printf("time %d time before ded %d\n", time, philo->time_before_dying);
-			pthread_mutex_lock(&philo->time_to_die);
-			if (meals_done(philo))
-				return ;
-			if (philo->info->time > philo->time_before_dying)
+//			pthread_mutex_lock(&philo->time_to_die);
+			if (philo->info->done_eating == philo->info->nb_of_philo)
 			{
-				printf("time %d time before ded %d\n", philo->info->time, philo->time_before_dying);
-				talk(philo, "died", philo->info->time);
-				pthread_mutex_unlock(&philo->time_to_die);
+//				pthread_mutex_unlock(&philo->time_to_die);
 				return;
 			}
-			pthread_mutex_unlock(&philo->time_to_die);
+			if (!meals_done(philo))
+			{
+				if (philo->info->time > philo->time_before_dying)
+				{
+					talk(philo, "died", philo->info->time);
+//					pthread_mutex_unlock(&philo->time_to_die);
+					return;
+				}
+			}
+//			pthread_mutex_unlock(&philo->time_to_die);
 			philo = philo->next;
 			i++;
 		}
-		usleep(999);
+		usleep(1000);
 	}
 }

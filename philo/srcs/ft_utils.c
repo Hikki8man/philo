@@ -75,9 +75,7 @@ void	custom_sleep(t_info *info, int time_to_do)
 	time_to_do += info->time;
 
 	while (info->time < time_to_do)
-	{
 		usleep(100);
-	}
 }
 
 void	wait_thread_and_start_in_mismatch(t_philo *philo)

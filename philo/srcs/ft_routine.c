@@ -26,11 +26,12 @@ void	*routine(void *arg)
 {
 	t_philo	*philo;
 
+	//TODO get rid of meal var?
+
 	philo = (t_philo *)arg;
 	if (lonely_philo(philo) == 1)
 		return (NULL);
 	wait_thread_and_start_in_mismatch(philo);
-//	philo->time_before_dying = time_in_ms(philo->info->start) + philo->info->time_to_die;
 	while (1)
 	{
 		if (philo_died(philo) || meals_done(philo))
@@ -42,5 +43,7 @@ void	*routine(void *arg)
 		sleepy(philo);
 		talk(philo, "is thinking", time_in_ms(philo->info->start));
 	}
+	if (meals_done(philo))
+		philo->info->done_eating += 1;
 	return (NULL);
 }

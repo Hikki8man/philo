@@ -23,6 +23,7 @@ void	init_info(t_info *info)
 	info->meal_param = 0;
 	info->threads_created = 0;
 	info->time = 0;
+	info->done_eating = 0;
 }
 
 int	parse_args(int ac, char **av, t_info *info)

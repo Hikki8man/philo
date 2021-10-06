@@ -35,14 +35,16 @@ void	eat(t_philo *philo)
 	custom_sleep(philo->info, philo->info->time_to_eat);
 	pthread_mutex_unlock(&philo->prev->fork);
 	pthread_mutex_unlock(&philo->fork);
-	pthread_mutex_lock(&philo->time_to_die);
-	philo->meals--;
-	if (meals_done(philo))
-		return ;
-//	printf("%d | time before ded %d\n",philo->id, philo->time_before_dying);
+//	if (philo_died(philo))
+//		return ;
 	philo->time_before_dying = philo->info->time + philo->info->time_to_die;
+//	pthread_mutex_lock(&philo->time_to_die);
+	philo->meals--;
+//	pthread_mutex_unlock(&philo->time_to_die);
 //	printf("%d | time before ded %d\n",philo->id, philo->time_before_dying);
-	pthread_mutex_unlock(&philo->time_to_die);
+
+//	printf("%d | time before ded %d\n",philo->id, philo->time_before_dying);
+
 }
 
 void	sleepy(t_philo *philo)

@@ -32,6 +32,7 @@ typedef struct s_info
 	int				meal_param;
 	int				threads_created;
 	int				philo_died;
+	int 			done_eating;
 	int 			time;
 
 }t_info;

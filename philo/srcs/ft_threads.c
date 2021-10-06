@@ -23,8 +23,8 @@ int	create_threads(t_philo *philo, t_info *info)
 	{
 		if (pthread_mutex_init(&philo->fork, NULL) != 0)
 			return (error("Mutex_init failure", 1, philo, *info));
-		if (pthread_mutex_init(&philo->time_to_die, NULL) != 0)
-			return (error("Mutex_init failure", 1, philo, *info));
+//		if (pthread_mutex_init(&philo->time_to_die, NULL) != 0)
+//			return (error("Mutex_init failure", 1, philo, *info));
 		if (pthread_create(&philo->th, NULL, &routine, (void *)philo) != 0)
 			return (error("Pthread_create failure", 1, philo, *info));
 		philo = philo->next;
@@ -42,8 +42,8 @@ int	destroy_mutex(t_philo *philo, t_info info)
 	{
 		if (pthread_mutex_destroy(&philo->fork) != 0)
 			return (error("Pthread_mutex_destroy failure", 1, philo, info));
-		if (pthread_mutex_destroy(&philo->time_to_die) != 0)
-			return (error("Pthread_mutex_destroy failure", 1, philo, info));
+//		if (pthread_mutex_destroy(&philo->time_to_die) != 0)
+//			return (error("Pthread_mutex_destroy failure", 1, philo, info));
 		philo = philo->next;
 		i++;
 	}
