@@ -29,6 +29,7 @@ void	take_forks(t_philo *philo)
 	pthread_mutex_lock(&philo->fork);
 	talk(philo, "has taken a fork", philo->info->time);
 }
+
 void	eat(t_philo *philo)
 {
 	talk(philo, "is eating", philo->info->time);

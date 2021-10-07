@@ -23,6 +23,7 @@
 typedef struct s_info
 {
 	pthread_mutex_t	talk;
+	pthread_mutex_t	philo_done_eating;
 	struct timeval	start;
 	int				nb_of_philo;
 	int				time_to_die;
@@ -32,20 +33,20 @@ typedef struct s_info
 	int				meal_param;
 	int				threads_created;
 	int				philo_died;
-	int 			done_eating;
-	int 			time;
+	int				done_eating;
+	int				time;
+	int				all_done;
 
 }t_info;
 
 typedef struct s_philo
 {
 	pthread_mutex_t	fork;
-	pthread_mutex_t	time_to_die;
 	pthread_t		th;
 	t_info			*info;
 	int				id;
 	int				meals;
-	int 			time_before_dying;
+	int				time_before_dying;
 	struct s_philo	*next;
 	struct s_philo	*prev;
 }t_philo;

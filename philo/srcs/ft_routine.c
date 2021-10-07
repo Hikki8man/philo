@@ -26,15 +26,12 @@ void	*routine(void *arg)
 {
 	t_philo	*philo;
 
-	//TODO get rid of meal var?®®
-
 	philo = (t_philo *)arg;
 	if (lonely_philo(philo) == 1)
 		return (NULL);
 	wait_thread_and_start_in_mismatch(philo);
 	while (1)
 	{
-
 		if (philo_died(philo) || meals_done(philo))
 			break ;
 		take_forks(philo);
@@ -45,6 +42,10 @@ void	*routine(void *arg)
 		talk(philo, "is thinking", time_in_ms(philo->info->start));
 	}
 	if (meals_done(philo))
+	{
+		pthread_mutex_lock(&philo->info->philo_done_eating);
 		philo->info->done_eating += 1;
+		pthread_mutex_unlock(&philo->info->philo_done_eating);
+	}
 	return (NULL);
 }

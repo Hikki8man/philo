@@ -20,9 +20,9 @@ int	error(char *str, int free_list, t_philo *philo, t_info info)
 	return (1);
 }
 
-void *clock_th(void *arg)
+void	*clock_th(void *arg)
 {
-	t_info *info;
+	t_info			*info;
 	struct timeval	start;
 	struct timeval	curr;
 	unsigned long	t1;
@@ -30,7 +30,7 @@ void *clock_th(void *arg)
 
 	info = (t_info *)arg;
 	gettimeofday(&start, NULL);
-	while (1)
+	while (info->all_done != 1)
 	{
 		gettimeofday(&curr, NULL);
 		t1 = (unsigned long)((start.tv_sec * 1000) + (start.tv_usec / 1000));
@@ -43,9 +43,9 @@ void *clock_th(void *arg)
 
 int	main(int ac, char **av)
 {
-	t_info	info;
-	t_philo	*philo;
-	pthread_t thread_time;
+	t_info		info;
+	t_philo		*philo;
+	pthread_t	thread_time;
 
 	if (ac == 5 || ac == 6)
 	{
@@ -57,15 +57,14 @@ int	main(int ac, char **av)
 			return (1);
 		gettimeofday(&info.start, NULL);
 		pthread_create(&thread_time, NULL, &clock_th, (void *)&info);
-//		pthread_detach(thread_time);
 		info.threads_created = 1;
 		if (info.nb_of_philo > 1)
 			check_death(philo);
-//		printf("philo died %d\n", info.philo_died);
 		if (join_threads(philo, info) != 0 || destroy_mutex(philo, info) != 0)
 			return (2);
-//		if (pthread_join(thread_time, NULL) != 0)
-//			return (error("Pthread_join failure", 1, philo, info));
+		info.all_done = 1;
+		if (pthread_join(thread_time, NULL) != 0)
+			return (error("Pthread_join failure", 1, philo, info));
 		free_philo_list(philo, info);
 	}
 	return (0);
