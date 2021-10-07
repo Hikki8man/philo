@@ -33,6 +33,8 @@ void check_death(t_philo *philo)
 	int i;
 	while (1)
 	{
+//		if (philo_died(philo))
+//			exit (1);
 		i = 0;
 		while (i < philo->info->nb_of_philo)
 		{

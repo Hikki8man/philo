@@ -32,8 +32,6 @@ void *clock_th(void *arg)
 	gettimeofday(&start, NULL);
 	while (1)
 	{
-		if (info->done_eating == info->nb_of_philo || info->philo_died == 1)
-			break ;
 		gettimeofday(&curr, NULL);
 		t1 = (unsigned long)((start.tv_sec * 1000) + (start.tv_usec / 1000));
 		t2 = (unsigned long)((curr.tv_sec * 1000) + (curr.tv_usec / 1000));
@@ -66,8 +64,8 @@ int	main(int ac, char **av)
 //		printf("philo died %d\n", info.philo_died);
 		if (join_threads(philo, info) != 0 || destroy_mutex(philo, info) != 0)
 			return (2);
-		if (pthread_join(thread_time, NULL) != 0)
-			return (error("Pthread_join failure", 1, philo, info));
+//		if (pthread_join(thread_time, NULL) != 0)
+//			return (error("Pthread_join failure", 1, philo, info));
 		free_philo_list(philo, info);
 	}
 	return (0);

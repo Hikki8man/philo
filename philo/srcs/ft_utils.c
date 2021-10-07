@@ -72,7 +72,7 @@ int	time_in_ms(struct timeval start)
 
 void	custom_sleep(t_info *info, int time_to_do)
 {
-	time_to_do += info->time;
+	time_to_do = info->time + time_to_do;
 
 	while (info->time < time_to_do)
 		usleep(100);

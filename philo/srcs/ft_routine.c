@@ -26,7 +26,7 @@ void	*routine(void *arg)
 {
 	t_philo	*philo;
 
-	//TODO get rid of meal var?
+	//TODO get rid of meal var?®®
 
 	philo = (t_philo *)arg;
 	if (lonely_philo(philo) == 1)
@@ -34,6 +34,7 @@ void	*routine(void *arg)
 	wait_thread_and_start_in_mismatch(philo);
 	while (1)
 	{
+
 		if (philo_died(philo) || meals_done(philo))
 			break ;
 		take_forks(philo);
