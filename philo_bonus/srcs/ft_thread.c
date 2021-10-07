@@ -13,7 +13,7 @@ void *check_death_time(void *arg)
 	{
 		if (time_in_ms(philo->info->start) > philo->time_before_dying)
 			philo_died(philo);
-		usleep(10);
+		usleep(100);
 	}
 	return (NULL);
 }

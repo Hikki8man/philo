@@ -5,7 +5,7 @@ void routine(t_philo *philo)
 	philo->time_before_dying = time_in_ms(philo->info->start) + philo->info->time_to_die;
 	create_thread(philo);
 	if (philo->id % 2)
-		usleep(1000);
+		usleep(50000);
 	while (1)
 	{
 		if (meals_done(philo))
