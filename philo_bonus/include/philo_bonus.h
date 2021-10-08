@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,34 +28,33 @@
 
 # define SEM_FORK "/sem_fork"
 # define SEM_TALK "/sem_talk"
+# define SEM_START "/sem_start"
 
 typedef struct s_info
 {
-
-	struct timeval	start;
 	sem_t			*forks;
 	sem_t			*talk;
+	sem_t			*sem_start;
 	int				nb_of_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meal_param;
-
+	int				time;
 }t_info;
 
 typedef struct s_philo
 {
 	t_info			*info;
-	int 			id;
+	int				id;
 	int				meals;
-	int 			time_before_dying;
+	int				time_before_dying;
 }t_philo;
 
 //--------utils
 int		ft_atoi(const char *nptr);
 int		ft_strcmp(const char *s1, const char *s2);
-int		time_in_ms(struct timeval start);
-void 	custom_sleep(int time_to_do);
+void	custom_sleep(t_info *info, int time_to_do);
 //--------init
 void	init_info(t_info *info, t_philo *philo);
 //--------Action
@@ -75,7 +74,7 @@ int		*create_process(t_philo *philo);
 void	wait_process(t_info *info, int *philo_pid);
 //--------Semaphore
 void	create_semaphores(t_info *info);
-void 	close_semaphores(t_info *info);
+void	close_semaphores(t_info *info);
 //--------Routine
 void	routine(t_philo *philo);
 //--------error

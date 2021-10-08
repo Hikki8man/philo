@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_action.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 14:58:10 by jchevet           #+#    #+#             */
+/*   Updated: 2021/10/08 14:58:13 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/philo_bonus.h"
 
 void	talk(t_philo *philo, char *str, time_t time)
@@ -11,16 +23,16 @@ void	talk(t_philo *philo, char *str, time_t time)
 void	take_forks(t_philo *philo)
 {
 	sem_wait(philo->info->forks);
-	talk(philo, "has taken a fork", time_in_ms(philo->info->start));
+	talk(philo, "has taken a fork", philo->info->time);
 	sem_wait(philo->info->forks);
-	talk(philo, "has taken a fork", time_in_ms(philo->info->start));
+	talk(philo, "has taken a fork", philo->info->time);
 }
 
 void	eat(t_philo *philo)
 {
-	talk(philo, "is eating", time_in_ms(philo->info->start));
-	custom_sleep(philo->info->time_to_eat);
-	philo->time_before_dying = time_in_ms(philo->info->start) + philo->info->time_to_die;
+	talk(philo, "is eating", philo->info->time);
+	custom_sleep(philo->info, philo->info->time_to_eat);
+	philo->time_before_dying = philo->info->time + philo->info->time_to_die;
 	philo->meals--;
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
@@ -29,6 +41,6 @@ void	eat(t_philo *philo)
 
 void	sleepy(t_philo *philo)
 {
-	talk(philo, "is sleeping", time_in_ms(philo->info->start));
-	custom_sleep(philo->info->time_to_sleep);
+	talk(philo, "is sleeping", philo->info->time);
+	custom_sleep(philo->info, philo->info->time_to_sleep);
 }

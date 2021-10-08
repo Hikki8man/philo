@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 15:00:02 by jchevet           #+#    #+#             */
+/*   Updated: 2021/10/08 15:00:03 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/philo_bonus.h"
 
-void routine(t_philo *philo)
+void	routine(t_philo *philo)
 {
-	philo->time_before_dying = time_in_ms(philo->info->start) + philo->info->time_to_die;
+	philo->time_before_dying = philo->info->time_to_die;
+	sem_wait(philo->info->sem_start);
+	sem_close(philo->info->sem_start);
 	create_thread(philo);
 	if (philo->id % 2)
 		usleep(50000);
@@ -12,15 +26,15 @@ void routine(t_philo *philo)
 		take_forks(philo);
 		eat(philo);
 		sleepy(philo);
-		talk(philo, "is thinking", time_in_ms(philo->info->start));
+		talk(philo, "is thinking", philo->info->time);
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_info	info;
 	t_philo	philo;
-	int 	*philo_pid;
+	int		*philo_pid;
 
 	init_info(&info, &philo);
 	if (parse_args(ac, av, &info, &philo) != 0)

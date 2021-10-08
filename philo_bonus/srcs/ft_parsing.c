@@ -1,6 +1,14 @@
-//
-// Created by Stellar on 03/10/2021.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 14:58:32 by jchevet           #+#    #+#             */
+/*   Updated: 2021/10/08 14:58:34 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
@@ -11,6 +19,7 @@ void	init_info(t_info *info, t_philo *philo)
 	info->time_to_eat = 0;
 	info->time_to_sleep = 0;
 	info->meal_param = 0;
+	info->time = 0;
 	philo->meals = 0;
 }
 

@@ -1,6 +1,14 @@
-//
-// Created by Stellar on 30/09/2021.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 14:59:06 by jchevet           #+#    #+#             */
+/*   Updated: 2021/10/08 14:59:08 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
@@ -50,30 +58,11 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int	time_in_ms(struct timeval start)
+void	custom_sleep(t_info *info, int time_to_do)
 {
-	struct timeval	curr;
-	unsigned long	t1;
-	unsigned long	t2;
-
-	gettimeofday(&curr, NULL);
-	t1 = (unsigned long)((start.tv_sec * 1000) + (start.tv_usec / 1000));
-	t2 = (unsigned long)((curr.tv_sec * 1000) + (curr.tv_usec / 1000));
-	return ((int)(t2 - t1));
-}
-
-void	custom_sleep(int time_to_do)
-{
-	struct timeval	curr;
-	int				timer;
-
-	gettimeofday(&curr, NULL);
-	timer = time_in_ms(curr);// = 0?
-	while (timer < time_to_do)
-	{
-		usleep(10);
-		timer = time_in_ms(curr);
-	}
+	time_to_do = info->time + time_to_do;
+	while (info->time < time_to_do)
+		usleep(100);
 }
 
 int	error(char *str)
