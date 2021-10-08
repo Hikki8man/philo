@@ -24,6 +24,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <errno.h>
+#include <string.h>
 # include <signal.h>
 
 # define SEM_FORK "/sem_fork"
@@ -54,6 +55,7 @@ typedef struct s_philo
 //--------utils
 int		ft_atoi(const char *nptr);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_itoa(int n);
 void	custom_sleep(t_info *info, int time_to_do);
 //--------init
 void	init_info(t_info *info, t_philo *philo);

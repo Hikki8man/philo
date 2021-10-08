@@ -28,9 +28,5 @@ int	meals_done(t_philo *philo)
 void	philo_died(t_philo *philo)
 {
 	talk(philo, "died", philo->info->time);
-	if (sem_close(philo->info->forks) != 0)
-		error("SEM_CLOSE FAILURE");
-	if (sem_close(philo->info->talk) != 0)
-		error("SEM_CLOSE FAILURE");
 	exit(3);
 }
