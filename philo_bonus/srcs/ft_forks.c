@@ -20,6 +20,7 @@ int *create_process(t_philo *philo)
 		philo_pid[i] = fork();
 		if (philo_pid[i] == -1)
 		{
+			//TODO exit all forks ?
 			free(philo_pid);
 			exit(EXIT_FAILURE);
 		}
@@ -40,10 +41,14 @@ void	wait_process(t_info *info, int *philo_pid)
 	pid = waitpid(-1, &status, 0);
 	if (WEXITSTATUS(status) == 3)
 	{
-		while (++i < info->nb_of_philo)
+		printf("hello %d\n", i);
+		while (++i < info->nb_of_philo) {
 			if (philo_pid[i] != pid)
 				if (kill(philo_pid[i], SIGKILL) != 0)
 					error("KILL");
+		}
+		printf("hello %d\n", i);
+		sleep(1);
 		sem_post(info->talk);
 	}
 	else

@@ -1,7 +1,3 @@
-//
-// Created by Stellar on 03/10/2021.
-//
-
 #include "../include/philo_bonus.h"
 
 void	talk(t_philo *philo, char *str, time_t time)
@@ -28,14 +24,7 @@ void	eat(t_philo *philo)
 	philo->meals--;
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
-	if (meals_done(philo))
-	{
-		if (sem_close(philo->info->talk) != 0)
-			error("SEM_CLOSE FAILURE");
-		if (sem_close(philo->info->forks) != 0)
-			error("SEM_CLOSE FAILURE");
-		exit(EXIT_SUCCESS);
-	}
+	meals_done(philo);
 }
 
 void	sleepy(t_philo *philo)

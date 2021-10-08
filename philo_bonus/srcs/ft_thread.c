@@ -15,7 +15,6 @@ void *check_death_time(void *arg)
 			philo_died(philo);
 		usleep(100);
 	}
-	return (NULL);
 }
 
 void create_thread(t_philo *philo)

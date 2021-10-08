@@ -8,8 +8,7 @@ void routine(t_philo *philo)
 		usleep(50000);
 	while (1)
 	{
-		if (meals_done(philo))
-			break ;
+		meals_done(philo);
 		take_forks(philo);
 		eat(philo);
 		sleepy(philo);

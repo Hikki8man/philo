@@ -22,9 +22,7 @@ int	philo_died(t_philo *philo)
 int	meals_done(t_philo *philo)
 {
 	if (philo->info->meal_param == 1 && philo->meals <= 0)
-	{
 		return (1);
-	}
 	return (0);
 }
 

@@ -36,8 +36,8 @@ void	eat(t_philo *philo)
 	custom_sleep(philo->info, philo->info->time_to_eat);
 	pthread_mutex_unlock(&philo->prev->fork);
 	pthread_mutex_unlock(&philo->fork);
-	philo->time_before_dying = philo->info->time + philo->info->time_to_die;
 	philo->meals--;
+	philo->time_before_dying = philo->info->time + philo->info->time_to_die;
 }
 
 void	sleepy(t_philo *philo)
