@@ -12,6 +12,8 @@
 
 #include "../include/philo_bonus.h"
 
+//TODO fix bonus + parsing
+
 void	routine(t_philo *philo)
 {
 	philo->time_before_dying = philo->info->time_to_die;
