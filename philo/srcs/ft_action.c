@@ -12,11 +12,11 @@
 
 #include "../include/philo.h"
 
-void	talk(t_philo *philo, char *str, time_t time)
+void	talk(t_philo *philo, char *str, u_int64_t time)
 {
 	pthread_mutex_lock(&philo->info->talk);
 	if (philo->info->philo_died != 1)
-		printf("%ld %d %s\n", time, philo->id, str);
+		printf("%lu %d %s\n", time, philo->id, str);
 	if (ft_strcmp(str, "died") == 0)
 		philo->info->philo_died = 1;
 	pthread_mutex_unlock(&philo->info->talk);
@@ -33,7 +33,7 @@ void	take_forks(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	talk(philo, "is eating", philo->info->time);
-	custom_sleep(philo->info, philo->info->time_to_eat);
+	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_eat);
 	pthread_mutex_unlock(&philo->prev->fork);
 	pthread_mutex_unlock(&philo->fork);
 	philo->meals--;
@@ -43,5 +43,5 @@ void	eat(t_philo *philo)
 void	sleepy(t_philo *philo)
 {
 	talk(philo, "is sleeping", philo->info->time);
-	custom_sleep(philo->info, philo->info->time_to_sleep);
+	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_sleep);
 }

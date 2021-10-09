@@ -20,27 +20,6 @@ int	error(char *str, int free_list, t_philo *philo, t_info info)
 	return (1);
 }
 
-void	*clock_th(void *arg)
-{
-	t_info			*info;
-	struct timeval	start;
-	struct timeval	curr;
-	unsigned long	t1;
-	unsigned long	t2;
-
-	info = (t_info *)arg;
-	gettimeofday(&start, NULL);
-	while (info->all_done != 1)
-	{
-		gettimeofday(&curr, NULL);
-		t1 = (unsigned long)((start.tv_sec * 1000) + (start.tv_usec / 1000));
-		t2 = (unsigned long)((curr.tv_sec * 1000) + (curr.tv_usec / 1000));
-		info->time = (int)(t2 - t1);
-		usleep(100);
-	}
-	return (NULL);
-}
-
 int	main(int ac, char **av)
 {
 	t_info		info;

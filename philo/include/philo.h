@@ -19,6 +19,7 @@
 # include <time.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <string.h>
 
 typedef struct s_info
 {
@@ -34,7 +35,7 @@ typedef struct s_info
 	int				threads_created;
 	int				philo_died;
 	int				done_eating;
-	int				time;
+	u_int64_t		time;
 	int				all_done;
 
 }t_info;
@@ -46,7 +47,7 @@ typedef struct s_philo
 	t_info			*info;
 	int				id;
 	int				meals;
-	int				time_before_dying;
+	u_int64_t		time_before_dying;
 	struct s_philo	*next;
 	struct s_philo	*prev;
 }t_philo;
@@ -54,13 +55,15 @@ typedef struct s_philo
 //--------utils
 int		ft_atoi(const char *nptr);
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_atoi_cmp(char *str);
+char	*ft_itoa(int n);
 int		time_in_ms(struct timeval start);
-void	custom_sleep(t_info *info, int time_to_do);
+void	custom_sleep(t_info *info, u_int64_t time_to_do);
 void	wait_thread_and_start_in_mismatch(t_philo *philo);
 //--------init
 void	init_info(t_info *info);
 //--------Action
-void	talk(t_philo *philo, char *str, time_t time);
+void	talk(t_philo *philo, char *str, u_int64_t time);
 void	take_forks(t_philo *philo);
 void	eat(t_philo *philo);
 void	sleepy(t_philo *philo);
@@ -77,6 +80,7 @@ int		destroy_mutex(t_philo *philo, t_info info);
 //--------Routine
 int		lonely_philo(t_philo *philo);
 void	*routine(void *arg);
+void	*clock_th(void *arg);
 //--------lst
 t_philo	*new_philo(int i, t_info *info);
 t_philo	*lstlast(t_philo *lst);

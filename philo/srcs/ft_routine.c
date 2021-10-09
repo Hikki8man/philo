@@ -12,6 +12,27 @@
 
 #include "../include/philo.h"
 
+void	*clock_th(void *arg)
+{
+	t_info			*info;
+	struct timeval	start;
+	struct timeval	curr;
+	u_int64_t		t1;
+	u_int64_t		t2;
+
+	info = (t_info *)arg;
+	gettimeofday(&start, NULL);
+	while (info->all_done != 1)
+	{
+		gettimeofday(&curr, NULL);
+		t1 = (u_int64_t)((start.tv_sec * 1000) + (start.tv_usec / 1000));
+		t2 = (u_int64_t)((curr.tv_sec * 1000) + (curr.tv_usec / 1000));
+		info->time = t2 - t1;
+		usleep(100);
+	}
+	return (NULL);
+}
+
 int	lonely_philo(t_philo *philo)
 {
 	if (philo->prev != NULL)
