@@ -17,17 +17,17 @@ void	*check_death_time(void *arg)
 	t_philo			*philo;
 	struct timeval	start;
 	struct timeval	curr;
-	unsigned long	t1;
-	unsigned long	t2;
+	u_int64_t		t1;
+	u_int64_t		t2;
 
 	philo = (t_philo *)arg;
 	gettimeofday(&start, NULL);
 	while (1)
 	{
 		gettimeofday(&curr, NULL);
-		t1 = (unsigned long)((start.tv_sec * 1000) + (start.tv_usec / 1000));
-		t2 = (unsigned long)((curr.tv_sec * 1000) + (curr.tv_usec / 1000));
-		philo->info->time = (int)(t2 - t1);
+		t1 = (u_int64_t)((start.tv_sec * 1000) + (start.tv_usec / 1000));
+		t2 = (u_int64_t)((curr.tv_sec * 1000) + (curr.tv_usec / 1000));
+		philo->info->time = t2 - t1;
 		if (philo->info->time > philo->time_before_dying)
 			philo_died(philo);
 		usleep(100);

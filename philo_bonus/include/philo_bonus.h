@@ -37,11 +37,11 @@ typedef struct s_info
 	sem_t			*talk;
 	sem_t			*sem_start;
 	int				nb_of_philo;
-	int				time_to_die;
+	u_int64_t		time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meal_param;
-	int				time;
+	u_int64_t 		time;
 }t_info;
 
 typedef struct s_philo
@@ -49,18 +49,19 @@ typedef struct s_philo
 	t_info			*info;
 	int				id;
 	int				meals;
-	int				time_before_dying;
+	u_int64_t		time_before_dying;
 }t_philo;
 
 //--------utils
 int		ft_atoi(const char *nptr);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_itoa(int n);
-void	custom_sleep(t_info *info, int time_to_do);
+int		ft_atoi_cmp(char *str);
+void	custom_sleep(t_info *info, u_int64_t time_to_do);
 //--------init
 void	init_info(t_info *info, t_philo *philo);
 //--------Action
-void	talk(t_philo *philo, char *str, time_t time);
+void	talk(t_philo *philo, char *str, u_int64_t time);
 void	take_forks(t_philo *philo);
 void	eat(t_philo *philo);
 void	sleepy(t_philo *philo);
@@ -80,6 +81,6 @@ void	close_semaphores(t_info *info);
 //--------Routine
 void	routine(t_philo *philo);
 //--------error
-int		error(char *str);
+
 
 #endif

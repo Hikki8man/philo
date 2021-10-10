@@ -31,7 +31,7 @@ void	take_forks(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	talk(philo, "is eating", philo->info->time);
-	custom_sleep(philo->info, philo->info->time_to_eat);
+	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_eat);
 	philo->time_before_dying = philo->info->time + philo->info->time_to_die;
 	philo->meals--;
 	sem_post(philo->info->forks);
@@ -42,5 +42,5 @@ void	eat(t_philo *philo)
 void	sleepy(t_philo *philo)
 {
 	talk(philo, "is sleeping", philo->info->time);
-	custom_sleep(philo->info, philo->info->time_to_sleep);
+	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_sleep);
 }

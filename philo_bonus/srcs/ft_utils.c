@@ -58,7 +58,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-void	custom_sleep(t_info *info, int time_to_do)
+void	custom_sleep(t_info *info, u_int64_t time_to_do)
 {
 	time_to_do = info->time + time_to_do;
 	while (info->time < time_to_do)

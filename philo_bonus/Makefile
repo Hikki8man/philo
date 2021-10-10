@@ -12,7 +12,7 @@ SRCS =	main.c \
 		ft_status.c \
 		ft_thread.c \
 		ft_utils.c \
-		ft_itoa.c
+		ft_utils2.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
