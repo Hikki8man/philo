@@ -73,7 +73,7 @@ int	time_in_ms(struct timeval start)
 void	custom_sleep(t_info *info, u_int64_t time_to_do)
 {
 	time_to_do = info->time + time_to_do;
-	while (info->time < time_to_do)
+	while (info->time < time_to_do)//TODO add if philo died
 		usleep(100);
 }
 
