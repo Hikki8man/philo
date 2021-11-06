@@ -16,7 +16,7 @@ void	talk(t_philo *philo, char *str, u_int64_t time)
 {
 	pthread_mutex_lock(&philo->info->talk);
 	if (philo->info->philo_died != 1)
-		printf("%lu %d %s\n", time, philo->id, str);
+		printf("%llu %d %s\n", time, philo->id, str);
 	if (ft_strcmp(str, "died") == 0)
 		philo->info->philo_died = 1;
 	pthread_mutex_unlock(&philo->info->talk);
