@@ -81,6 +81,10 @@ void	wait_thread_and_start_in_mismatch(t_philo *philo)
 {
 	while (philo->info->threads_created != 1)
 		usleep(10);
-	if (philo->id % 2 == 0)
+	if (philo->id % 2 != 0)
+	{
+		talk(philo, "is sleeping", philo->info->time);
 		usleep(50000);
+	}
+
 }

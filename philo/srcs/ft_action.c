@@ -32,8 +32,8 @@ void	take_forks(t_philo *philo)
 
 void	eat(t_philo *philo)
 {
-	talk(philo, "is eating", philo->info->time);
 	philo->time_before_dying = philo->info->time + philo->info->time_to_die;//todo test if it still works + add for bonus
+	talk(philo, "is eating", philo->info->time);
 	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_eat);
 	pthread_mutex_unlock(&philo->prev->fork);
 	pthread_mutex_unlock(&philo->fork);
