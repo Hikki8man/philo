@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:14:01 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:14:16 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/03 11:25:51 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	time_in_ms(struct timeval start)
 void	custom_sleep(t_info *info, u_int64_t time_to_do)
 {
 	time_to_do = info->time + time_to_do;
-	while (info->time < time_to_do)//TODO add if philo died
+	while (info->time < time_to_do && info->philo_died != 1)
 		usleep(100);
 }
 

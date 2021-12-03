@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:11:45 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:11:48 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/03 11:20:28 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int ac, char **av)
 		if (pthread_join(thread_time, NULL) != 0)
 			return (error("Pthread_join failure", 1, philo, info));
 		free_philo_list(philo, info);
+		return (0);
 	}
-	return (0);
+	write(2, "Error\nWrong number of arguments\n", 33);
+	return (1);
 }
