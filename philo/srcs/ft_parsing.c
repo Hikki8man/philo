@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:12:32 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:12:34 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 11:30:07 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_info(t_info *info)
 int	parse_args(int ac, char **av, t_info *info)
 {
 	info->nb_of_philo = ft_atoi_cmp(av[1]);
-	info->time_to_die = (int)ft_atoi_cmp(av[2]);
+	info->time_to_die = ft_atoi_cmp(av[2]);
 	info->time_to_eat = ft_atoi_cmp(av[3]);
 	info->time_to_sleep = ft_atoi_cmp(av[4]);
 	if (ac == 6)
@@ -38,7 +38,7 @@ int	parse_args(int ac, char **av, t_info *info)
 		info->nb_of_meals = ft_atoi_cmp(av[5]);
 		info->meal_param = 1;
 	}
-	if (info->nb_of_philo <= 0 || (int)info->time_to_die < 0 \
+	if (info->nb_of_philo <= 0 || info->time_to_die < 0 \
 	|| info->time_to_eat < 0 || info->time_to_sleep < 0 \
 	|| info->nb_of_meals < 0)
 		return (1);

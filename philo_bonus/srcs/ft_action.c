@@ -6,16 +6,16 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:58:10 by jchevet           #+#    #+#             */
-/*   Updated: 2021/10/08 14:58:13 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 11:33:12 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
-void	talk(t_philo *philo, char *str, time_t time)
+void	talk(t_philo *philo, char *str, u_int64_t time)
 {
 	sem_wait(philo->info->talk);
-	printf("%ld %d %s\n", time, philo->id, str);
+	printf("%llu %d %s\n", time, philo->id, str);
 	if (ft_strcmp(str, "died") != 0)
 		sem_post(philo->info->talk);
 }

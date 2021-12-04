@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:59:06 by jchevet           #+#    #+#             */
-/*   Updated: 2021/10/08 14:59:08 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 11:31:50 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	custom_sleep(t_info *info, u_int64_t time_to_do)
 		usleep(100);
 }
 
-int	error(char *str)
+void	error(char *str)
 {
 	printf("Error\n%s\n", str);
 	exit(EXIT_FAILURE);

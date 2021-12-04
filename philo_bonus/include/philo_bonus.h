@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:37:22 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:37:25 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 13:25:19 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <errno.h>
-#include <string.h>
+# include <string.h>
 # include <signal.h>
 
 # define SEM_FORK "/sem_fork"
@@ -37,7 +37,7 @@ typedef struct s_info
 	sem_t			*talk;
 	sem_t			*sem_start;
 	int				nb_of_philo;
-	u_int64_t		time_to_die;
+	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meal_param;
@@ -81,6 +81,6 @@ void	close_semaphores(t_info *info);
 //--------Routine
 void	routine(t_philo *philo);
 //--------error
-
+void	error(char *str);
 
 #endif

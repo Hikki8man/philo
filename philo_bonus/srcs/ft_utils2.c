@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:13:18 by jchevet           #+#    #+#             */
-/*   Updated: 2021/10/09 15:14:40 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 11:18:36 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ int ft_atoi_cmp(char *str)
 	if (s == NULL)
 		return (-1);
 	if (ft_strcmp(s, str) != 0)
-	{
-		free(s);
-		return (-1);
-	}
+		nb = -1;
+	free(s);
 	return (nb);
 }
