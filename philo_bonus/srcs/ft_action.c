@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:58:10 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/04 11:33:12 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 12:28:12 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	take_forks(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	talk(philo, "is eating", philo->info->time);
-	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_eat);
 	philo->time_before_dying = philo->info->time + philo->info->time_to_die;
+	custom_sleep(philo->info, (u_int64_t)philo->info->time_to_eat);
 	philo->meals--;
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
