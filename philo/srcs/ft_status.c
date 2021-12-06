@@ -6,18 +6,11 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:13:31 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/06 14:50:12 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 15:02:40 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-int	philo_died(t_philo *philo)
-{
-	if (philo->info->philo_died == 1)
-		return (1);
-	return (0);
-}
 
 int	meals_done(t_philo *philo)
 {

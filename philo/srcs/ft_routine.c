@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:13:20 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/06 14:05:23 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 15:02:26 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	*routine(void *arg)
 	wait_thread_and_start_in_mismatch(philo);
 	while (1)
 	{
-		if (philo_died(philo) || meals_done(philo))
+		if (philo->info->philo_died || meals_done(philo))
 			break ;
 		take_forks(philo);
 		eat(philo);
-		if (philo_died(philo) || meals_done(philo))
+		if (philo->info->philo_died || meals_done(philo))
 			break ;
 		sleepy(philo);
 		talk(philo, "is thinking", time_in_ms(philo->info->start), 0);

@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:37:22 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/06 14:06:30 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 15:02:48 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	take_forks(t_philo *philo);
 void	eat(t_philo *philo);
 void	sleepy(t_philo *philo);
 //--------Status
-int		philo_died(t_philo *philo);
 int		meals_done(t_philo *philo);
 void	check_death(t_philo *philo);
 //--------parsing
