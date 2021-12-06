@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:59:18 by jchevet           #+#    #+#             */
-/*   Updated: 2021/10/08 14:59:20 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 14:40:55 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,14 @@ int	*create_process(t_philo *philo)
 void	wait_process(t_info *info, int *philo_pid)
 {
 	int	status;
-	int	pid;
 	int	i;
 
 	i = -1;
-	pid = waitpid(-1, &status, 0);
-	if (WEXITSTATUS(status) == 3)
+	while (waitpid(-1, &status, 0) != -1)
 	{
-		while (++i < info->nb_of_philo)
-		{
-			if (philo_pid[i] != pid)
-				if (kill(philo_pid[i], SIGKILL) != 0)
-					error("KILL");
-		}
-		sem_post(info->talk);
-	}
-	else
-	{
-		while (++i < info->nb_of_philo - 1)
-			waitpid(-1, NULL, 0);
+		if (WEXITSTATUS(status) == 3)
+			while (++i < info->nb_of_philo)
+				kill(philo_pid[i], SIGKILL);
 	}
 	free(philo_pid);
 }

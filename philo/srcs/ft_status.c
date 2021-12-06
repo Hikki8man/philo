@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:13:31 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:13:33 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 14:50:12 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ void	check_death(t_philo *philo)
 			{
 				if (philo->info->time > philo->time_before_dying)
 				{
-					talk(philo, "died", philo->info->time);
+					philo->info->philo_died = 1;
+					talk(philo, "died", philo->info->time, 1);
 					return ;
 				}
 			}
 			philo = philo->next;
 			i++;
 		}
-		usleep(1000);
+		usleep(100);
 	}
 }

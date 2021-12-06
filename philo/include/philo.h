@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:37:22 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:37:25 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/06 14:06:30 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	wait_thread_and_start_in_mismatch(t_philo *philo);
 //--------init
 void	init_info(t_info *info);
 //--------Action
-void	talk(t_philo *philo, char *str, u_int64_t time);
+void	talk(t_philo *philo, char *str, u_int64_t time, int is_main);
 void	take_forks(t_philo *philo);
 void	eat(t_philo *philo);
 void	sleepy(t_philo *philo);
