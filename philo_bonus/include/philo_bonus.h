@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:37:22 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/04 13:25:19 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/14 12:49:19 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_info
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meal_param;
-	u_int64_t 		time;
+	u_int64_t		time;
 }t_info;
 
 typedef struct s_philo

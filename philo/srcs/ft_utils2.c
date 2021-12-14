@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:13:18 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/04 11:17:47 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 14:37:28 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int ft_atoi_cmp(char *str)
+int	ft_atoi_cmp(char *str)
 {
-	int	nb;
-	char *s;
+	int		nb;
+	char	*s;
 
 	nb = atoi(str);
 	if (nb < 0)

@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:37:22 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/06 15:02:48 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 13:40:53 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_info
 	pthread_mutex_t	talk;
 	pthread_mutex_t	philo_done_eating;
 	struct timeval	start;
-	int				nb_of_philo;
+	int				nb;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
@@ -85,8 +85,8 @@ t_philo	*new_philo(int i, t_info *info);
 t_philo	*lstlast(t_philo *lst);
 t_philo	*create_list_of_philo(t_info *info);
 void	add_back(t_philo **lst, t_philo *new);
-void	free_philo_list(t_philo *philo, t_info info);
+void	free_philo_list(t_philo *philo, int nb);
 //--------error
-int		error(char *str, int free_list, t_philo *philo, t_info info);
+int		error(char *str, int free_list, t_philo *philo, int nb);
 
 #endif

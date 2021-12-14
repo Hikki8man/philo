@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:13:31 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/06 15:02:40 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 13:44:07 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	check_death(t_philo *philo)
 	while (1)
 	{
 		i = 0;
-		while (i < philo->info->nb_of_philo)
+		while (i < philo->info->nb)
 		{
-			if (philo->info->done_eating == philo->info->nb_of_philo)
+			if (philo->info->done_eating == philo->info->nb)
 				return ;
 			if (!meals_done(philo))
 			{

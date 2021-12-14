@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:13:00 by jchevet           #+#    #+#             */
-/*   Updated: 2021/09/30 04:13:07 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 14:32:58 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,23 @@ t_philo	*create_list_of_philo(t_info *info)
 {
 	t_philo	*philos;
 	t_philo	*tmp;
+	t_philo	*new;
 	int		i;
 
 	i = 0;
 	philos = NULL;
-	while (i < info->nb_of_philo)
+	while (i < info->nb)
 	{
-		add_back(&philos, new_philo(i + 1, info));
+		new = new_philo(i + 1, info);
+		if (!new)
+		{
+			error("Malloc failure", 1, philos, i);
+			return (NULL);
+		}
+		add_back(&philos, new);
 		i++;
 	}
-	if (info->nb_of_philo > 1)
+	if (info->nb > 1)
 	{
 		tmp = lstlast(philos);
 		tmp->next = philos;
@@ -72,13 +79,13 @@ t_philo	*create_list_of_philo(t_info *info)
 	return (philos);
 }
 
-void	free_philo_list(t_philo *philo, t_info info)
+void	free_philo_list(t_philo *philo, int nb)
 {
 	t_philo	*tmp;
 	int		i;
 
 	i = 0;
-	while (i < info.nb_of_philo)
+	while (i < nb)
 	{
 		tmp = philo->next;
 		free(philo);

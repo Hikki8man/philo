@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:14:01 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/06 14:07:01 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/11 13:03:49 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,5 @@ void	wait_thread_and_start_in_mismatch(t_philo *philo)
 	while (philo->info->threads_created != 1)
 		usleep(10);
 	if (philo->id % 2 != 0)
-	{
-		talk(philo, "is sleeping", philo->info->time, 0);
 		usleep(50000);
-	}
-
 }
