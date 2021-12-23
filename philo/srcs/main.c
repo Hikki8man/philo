@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 04:11:45 by jchevet           #+#    #+#             */
-/*   Updated: 2021/12/14 12:48:41 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/12/23 10:32:46 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 		info.threads_created = 1;
 		if (info.nb > 1)
 			check_death(philo);
-		if (!join_and_destroy_mutex(philo, &info, thread_time))
+		if (!join_and_destroy(philo, &info, thread_time))
 			return (1);
 		return (0);
 	}
